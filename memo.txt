@@ -1,0 +1,6 @@
+$ docker run --rm compilerbook ls /
+Dockerコンテナ内で、単発のコマンド実行
+
+$ docker run --rm -v /Users/fukumanaoya/Documents/低レイヤを知りたい人のためのCコンパイラ入門:/ccompiler -w /ccompiler compilerbook ls .
+Dockerコンテナ内で、単発のコマンド実行＆ボリュームのマウント
+
