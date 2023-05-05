@@ -1,4 +1,4 @@
-CFLAGS=-std=c11 -g -Wall -Wextra -Werror -static
+CFLAGS=-std=c11 -g -Wall -Wextra -Werror
 9cc: 9cc.c lexer.c parser.c gen.c error.c
 	$(CC) -o 9cc 9cc.c lexer.c parser.c gen.c error.c $(CFLAGS)
 

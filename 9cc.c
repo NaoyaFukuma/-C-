@@ -19,7 +19,6 @@ int main(int argc, char **argv) {
 
   // ユーザー入力を保持する
   user_input = argv[1];
-
   // トークナイズ
   token = tokenize(argv[1]);
 

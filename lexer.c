@@ -19,7 +19,8 @@ Token *tokenize(char *p) {
     }
 
     // 記号
-    if (*p == '+' || *p == '-') {
+    if (*p == '+' || *p == '-' || *p == '*' || *p == '/' || *p == '(' ||
+        *p == ')') {
       cur = new_token(TK_RESERVED, cur,
                       p++); // p++: pの値を返した後にpをインクリメントする
       continue;
