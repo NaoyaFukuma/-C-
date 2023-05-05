@@ -9,6 +9,7 @@ int expect_number();
 
 Node *mul();
 Node *primary();
+Node *unary();
 
 Node *new_node(NodeKind kind, Node *lhs, Node *rhs) {
   Node *node = calloc(1, sizeof(Node)); // calloc: メモリを確保し、0で埋める
@@ -40,17 +41,27 @@ Node *expr() {
 }
 
 Node *mul() {
-  Node *node = primary();
+  Node *node = unary();
 
   for (;;) {
     if (consume('*')) {
-      node = new_node(ND_MUL, node, primary()); // *の場合
+      node = new_node(ND_MUL, node, unary()); // *の場合
     } else if (consume('/')) {
-      node = new_node(ND_DIV, node, primary()); // /の場合
+      node = new_node(ND_DIV, node, unary()); // /の場合
     } else {
       return node;
     }
   }
+}
+
+Node *unary() {
+  if (consume('+')) {
+    return primary(); // +の場合
+  }
+  if (consume('-')) {
+    return new_node(ND_SUB, new_node_num(0), primary()); // -の場合
+  }
+  return primary();
 }
 
 Node *primary() {
