@@ -28,6 +28,26 @@ void gen(Node *node) {
     printf(
         "  idiv rdi\n"); // idiv: rdx:raxをrdiで割り、商をrax、余りをrdxに格納
     break;
+  case ND_EQ:
+    printf("  cmp rax, rdi\n");  // cmp: raxとrdiを比較
+    printf("  sete al\n");       // sete: raxの下位8bitを1にする
+    printf("  movzb rax, al\n"); // movzb: raxの下位8bitを64bitに拡張
+    break;
+  case ND_NE:
+    printf("  cmp rax, rdi\n");  // cmp: raxとrdiを比較
+    printf("  setne al\n");      // setne: raxの下位8bitを1にする
+    printf("  movzb rax, al\n"); // movzb: raxの下位8bitを64bitに拡張
+    break;
+  case ND_LT:
+    printf("  cmp rax, rdi\n");  // cmp: raxとrdiを比較
+    printf("  setl al\n");       // setl: raxの下位8bitを1にする
+    printf("  movzb rax, al\n"); // movzb: raxの下位8bitを64bitに拡張
+    break;
+  case ND_LE:
+    printf("  cmp rax, rdi\n");  // cmp: raxとrdiを比較
+    printf("  setle al\n");      // setle: raxの下位8bitを1にする
+    printf("  movzb rax, al\n"); // movzb: raxの下位8bitを64bitに拡張
+    break;
   case ND_NUM:
     break;
   }
